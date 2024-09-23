@@ -1,1 +1,8 @@
-problems
+/problems
+/out
+/cache
+/broadcast
+
+/node_modules
+node_modules
+node_modules/
