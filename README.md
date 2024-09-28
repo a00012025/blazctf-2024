@@ -1,8 +1,11 @@
 # BlazCTF 2024 Writeup
 
+- Official challenges repo: [link](https://github.com/fuzzland/blazctf-2024)
+- Full write up from DeFiHackLabs team: [link](https://github.com/DeFiHackLabs/blazctf-2024-writeup)
+
 Following is the writeup for the challenges I solved in BlazCTF 2024.
 
-## 8Inch
+## [8Inch](https://github.com/fuzzland/blazctf-2024/tree/main/eight-inch)
 
 In this challenge, we are presented with a trade settlement contract where a trade has been created with the sell token `WOJAK` and the buy token `WETH`. The objective is to drain all `WOJAK` tokens and transfer them to the `0xc0ffee` address.
 
@@ -97,7 +100,7 @@ function run() public {
 }
 ```
 
-## Doju
+## [Doju](https://github.com/fuzzland/blazctf-2024/tree/main/doju)
 
 In this challenge, we are presented with two Solidity contracts: **Doju** and **Challenge**. The Doju contract implements a bonding curve token, and the Challenge contract interacts with it. Our goal is to exploit a vulnerability in the Doju contract to increase the balance of the `0xc0ffee` address beyond half of the maximum `uint256` value.
 
@@ -158,7 +161,7 @@ We can control minOut and tokenAmount, and `to` should be set as the contract's 
 
 So we can set the first 4 bytes of `minOut` are to be `0xa9059cbb` which is the function selector of `transfer(address,uint256)`. And the last 16 bytes plus the first 4 bytes of `to` should be an address that we have control over. We can use tools like [Profanity2](https://github.com/1inch/profanity2) to generate the address with given suffix. And the last 16 bytes of `to` will be interpreted as the amount to transfer, so can set `tokenAmount` = 0 to let the contract transfer a large amount of Doju token out.
 
-## I Love REVMC
+## [I Love REVMC](https://github.com/fuzzland/blazctf-2024/tree/main/i-love-revmc)
 
 ### Background
 
